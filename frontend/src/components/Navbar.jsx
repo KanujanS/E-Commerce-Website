@@ -7,7 +7,7 @@ const Navbar = () => {
   return (
     <div className='flex items-center justify-between py-5 font-medium'>
         <Link to='/'>
-           <img src={assets.logo} alt="Logo" className='w-60 cursor-pointer'/>
+           <img src={assets.logo} alt="Logo" className='w-40 lg:w-60 cursor-pointer'/>
         </Link>
         <ul className='hidden sm:flex text-sm text-gray-700 gap-5 '>
             <NavLink to='/' className='flex flex-col items-center gap-1'>
@@ -28,7 +28,7 @@ const Navbar = () => {
             </NavLink>
         </ul>
 
-        <div className='flex items-center gap-6'>
+        <div className='flex items-center gap-4 lg:gap-6'>
             <img src={assets.search_icon} alt="Search_Icon" className='w-5 cursor-pointer' />
             <div className='group relative'>
                 <img src={assets.profile_icon} alt="Profile_Icon" className='w-5 cursor-pointer' />
@@ -48,7 +48,16 @@ const Navbar = () => {
         </div>
         {/* Sidebar menu for small screen */}
         <div className={`absolute top-0 right-0 bottom-0 overflow-hidden bg-white transition-all ${visible ? 'w-full' : 'w-0'}`}>
-
+            <div className='flex flex-col text-gray-600'>
+                <div onClick={()=>setVisible(false)} className='flex items-center gap-4 p-3 cursor-pointer'>
+                    <img  src={assets.dropdown_icon} alt="Dropdown_Icon" className='h-4 rotate-180'/>
+                    <p>Back</p>
+                </div>
+                <NavLink onClick={()=>setVisible(false)} className='py-2 pl-6 border ' to='/'>Home</NavLink>
+                <NavLink onClick={()=>setVisible(false)} className='py-2 pl-6 border border-t-0' to='/collection'>Collection</NavLink>
+                <NavLink onClick={()=>setVisible(false)} className='py-2 pl-6 border border-t-0' to='/about'>About</NavLink>
+                <NavLink onClick={()=>setVisible(false)} className='py-2 pl-6 border border-t-0' to='/contact'>Contact Us</NavLink>
+            </div>
         </div>
     </div>
   )
