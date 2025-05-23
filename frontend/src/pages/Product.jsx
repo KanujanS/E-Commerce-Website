@@ -40,7 +40,7 @@ const Product = () => {
           </div>
 
           {/* Main Image */}
-          <div className="w-full border border-white rounded-3xl p-4 shadow-2xl shadow-gray-500">
+          <div className="w-full h-auto sm:h-[40%] md:h-[60%] lg:h-auto border border-white rounded-3xl p-4 shadow-2xl shadow-gray-500">
             <img src={image} alt="Main product" className="w-full h-full rounded-2xl"/>
           </div>
         </div>
