@@ -6,7 +6,7 @@ import { IoTrashBinOutline } from "react-icons/io5";
 import CartTotal from "../components/CartTotal";
 
 const Cart = () => {
-  const { products, currency, cartItems, updateQuantity } = useContext(ShopContext);
+  const { products, currency, cartItems, updateQuantity, navigate } = useContext(ShopContext);
 
   const [cartData, setCartData] = useState([]);
 
@@ -64,7 +64,7 @@ const Cart = () => {
         <div className="w-full sm:w-[480px]">
           <CartTotal/>
           <div className="w-full text-end">
-            <button className="bg-[#654321] text-white text-sm my-8 py-3 px-8 rounded-2xl border border-none shadow-2xl shadow-gray-600">PROCEED TO CHECKOUT</button>
+            <button onClick={()=>navigate('/place-order')} className="bg-[#654321] text-white text-sm my-8 py-3 px-8 rounded-2xl border border-none shadow-2xl shadow-gray-600 cursor-pointer">PROCEED TO CHECKOUT</button>
           </div>
         </div>
       </div>

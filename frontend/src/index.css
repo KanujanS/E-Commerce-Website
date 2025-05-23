@@ -10,3 +10,6 @@ a.active hr{
     color: white;
   }
 }
+body, html {
+  overflow-x: hidden;
+}
