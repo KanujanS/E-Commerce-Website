@@ -6,8 +6,8 @@ const Login = () => {
     event.preventDefault();
   }
   return (
-    <form onSubmit={onSubmitHandler} className='flex flex-col items-center w-[90%] sm:max-w-100 m-auto mt-10 gap-4 text-[#654321] border border-none p-8 shadow-2xl shadow-gray-600 rounded-2xl'>
-      <div className='inline-flex items-center gap-2 mb-2 mt-8'>
+    <form onSubmit={onSubmitHandler} className='flex flex-col  w-[90%] sm:max-w-100 m-auto mt-10 gap-4 text-[#654321] border border-none p-8 shadow-2xl shadow-gray-600 rounded-2xl'>
+      <div className='flex items-center justify-center gap-2 mb-2 mt-8'>
         <hr className='border-none h-[3px] w-10 bg-[#654321]'/>
         <p className='text-3xl'>{currentState}</p>
         <hr className='border-none h-[3px] w-10 bg-[#654321]'/>

@@ -37,6 +37,8 @@ const Footer = () => {
             <ul className='flex flex-col gap-1 text-gray-600'>
                 <li>+94 11 555-1212</li>
                 <li>maxbuy@gmail.com</li>
+                <li className='pt-2 text-[#654321] underline font-medium'>Head Office</li>
+                <p className='pt-1'>No-02, Galle Road,<br />Bambalapitiya, Sri Lanka.</p>
             </ul>
         </div>
     </div>
