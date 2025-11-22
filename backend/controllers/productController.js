@@ -17,12 +17,12 @@ const addProduct = async (req, res) => {
         
     } catch (error) {
         console.log(error);
-        res.json({success: false, message: error.message})
+        res.json({success: false, message: error.message});
     }
 }
 // Function for list product
 const listProducts = async (req, res) => {
-
+    
 }
 // Function for remove product
 const removeProduct = async (req, res) => {
