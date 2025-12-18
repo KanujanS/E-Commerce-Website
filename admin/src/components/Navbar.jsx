@@ -3,9 +3,9 @@ import {assets }from '../assets/assets'
 
 const Navbar = () => {
   return (
-    <div>
-        <img src={assets.logo} alt="Logo" />
-        <button>Logout</button>
+    <div className='flex items-center py-2 px-[4%] justify-between'> 
+        <img className='w-[max(15%,80px)] mt-2' src={assets.logo} alt="Logo" />
+        <button className='bg-[#654321] text-white px-5 py-2 sm:px-7 sm:py-2 rounded-full text-xs sm:text-sm'>Logout</button>
     </div>
   )
 }
