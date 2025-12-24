@@ -9,3 +9,9 @@
     background-color: #2d12123b;
     border-color: #2d1212;
 }
+
+select, input, textarea{
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    outline-color: #2d1212;
+}
