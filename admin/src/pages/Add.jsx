@@ -14,6 +14,26 @@ const Add = () => {
     const [subcategory, setSubcategory] = useState('Topwear');
     const [sizes, setSizes] = useState([]);
     const [bestseller, setBestseller] = useState(false);
+
+    const onSubmitHandler =  async (e) => {
+        e.preventDefault();
+        try {
+            const formData = new FormData();
+            image1 && formData.append('image1', image1);
+            image2 && formData.append('image2', image2);
+            image3 && formData.append('image3', image3);
+            image4 && formData.append('image4', image4);
+            formData.append('name', name);
+            formData.append('description', description);
+            formData.append('price', price);
+            formData.append('category', category);
+            formData.append('subcategory', subcategory);
+            formData.append('sizes', JSON.stringify(sizes));
+            formData.append('bestseller', bestseller);
+        } catch (error) {
+            
+        }
+    }
   return (
     <form className='flex flex-col w-full items-start gap-3'>
         <div>
@@ -70,25 +90,28 @@ const Add = () => {
         <div>
             <p className='mb-2'>Product sizes</p>
             <div className='flex gap-3'>
-                <div>
-                    <p className='bg-slate-200 px-3 py-1 cursor-pointer'>S</p>
+                <div onClick={()=>setSizes(prev => prev.includes("S") ? prev.filter(item => item !== "S") : [...prev, "S"])}>
+                    <p className={` ${sizes.includes("S") ? "bg-red-900/20" : "bg-slate-200"} px-3 py-1 cursor-pointer`}>S</p>
                 </div>
-                <div>
-                    <p className='bg-slate-200 px-3 py-1 cursor-pointer'>M</p>
+                <div onClick={()=>setSizes(prev => prev.includes("M") ? prev.filter(item => item !== "M") : [...prev, "M"])}>
+                    <p className={` ${sizes.includes("M") ? "bg-red-900/20" : "bg-slate-200"} px-3 py-1 cursor-pointer`}>M</p>
                 </div>
-                <div>
-                    <p className='bg-slate-200 px-3 py-1 cursor-pointer'>L</p>
+                <div onClick={()=>setSizes(prev => prev.includes("L") ? prev.filter(item => item !== "L") : [...prev, "L"])}>
+
+                    <p className={` ${sizes.includes("L") ? "bg-red-900/20" : "bg-slate-200"} px-3 py-1 cursor-pointer`}>L</p>
                 </div>
-                <div>
-                    <p className='bg-slate-200 px-3 py-1 cursor-pointer'>XL</p>
+                <div onClick={()=>setSizes(prev => prev.includes("XL") ? prev.filter(item => item !== "XL") : [...prev, "XL"])}>
+
+                    <p className={` ${sizes.includes("XL") ? "bg-red-900/20" : "bg-slate-200"} px-3 py-1 cursor-pointer`}>XL</p>
                 </div>
-                <div>
-                    <p className='bg-slate-200 px-3 py-1 cursor-pointer'>XXL</p>
+                <div onClick={()=>setSizes(prev => prev.includes("XXL") ? prev.filter(item => item !== "XXL") : [...prev, "XXL"])}>
+
+                    <p className={` ${sizes.includes("XXL") ? "bg-red-900/20" : "bg-slate-200"} px-3 py-1 cursor-pointer`}>XXL</p>
                 </div>
             </div>
         </div>
         <div className='flex gap-2 mt-2'>
-            <input type="checkbox" id='bestseller'/>
+            <input type="checkbox" id='bestseller' onChange={()=>setBestseller(prev => !prev)} checked={bestseller}/>
             <label className='cursor-pointer' htmlFor="bestseller"> Add to Bestseller</label>
         </div>
         <button className='w-28 py-3 mt-4 text-white bg-[#2d1212] rounded-2xl'>ADD</button>
