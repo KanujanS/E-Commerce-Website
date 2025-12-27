@@ -1,5 +1,7 @@
 import React, { useState } from 'react'
 import { assets } from '../assets/assets'
+import axios from 'axios'
+import { backendUrl } from '../App'
 
 const Add = () => {
     const [image1, setImage1] = useState(false);
@@ -30,6 +32,9 @@ const Add = () => {
             formData.append('subcategory', subcategory);
             formData.append('sizes', JSON.stringify(sizes));
             formData.append('bestseller', bestseller);
+            const response = await axios.post(backendUrl + '/api/product/add', formData);
+            console.log(response.data);
+            
         } catch (error) {
             
         }
