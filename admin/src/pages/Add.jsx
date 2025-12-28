@@ -33,7 +33,6 @@ const Add = () => {
             formData.append('sizes', JSON.stringify(sizes));
             formData.append('bestseller', bestseller);
             const response = await axios.post(backendUrl + '/api/product/add', formData);
-            console.log(response.data);
             
         } catch (error) {
             
