@@ -118,7 +118,7 @@ const Add = () => {
             <input type="checkbox" id='bestseller' onChange={()=>setBestseller(prev => !prev)} checked={bestseller}/>
             <label className='cursor-pointer' htmlFor="bestseller"> Add to Bestseller</label>
         </div>
-        <button className='w-28 py-3 mt-4 text-white bg-[#2d1212] rounded-2xl'>ADD</button>
+        <button className='w-28 py-3 mt-4 text-white bg-[#2d1212] rounded-2xl'>Add</button>
     </form>
   )
 }
