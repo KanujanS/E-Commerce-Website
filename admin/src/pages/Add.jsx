@@ -3,7 +3,7 @@ import { assets } from '../assets/assets'
 import axios from 'axios'
 import { backendUrl } from '../App'
 
-const Add = () => {
+const Add = ({token}) => {
     const [image1, setImage1] = useState(false);
     const [image2, setImage2] = useState(false);
     const [image3, setImage3] = useState(false);
@@ -13,7 +13,7 @@ const Add = () => {
     const [description, setDescription] = useState('');
     const [price, setPrice] = useState('');
     const [category, setCategory] = useState('Men');
-    const [subcategory, setSubcategory] = useState('Topwear');
+    const [subCategory, setSubCategory] = useState('Topwear');
     const [sizes, setSizes] = useState([]);
     const [bestseller, setBestseller] = useState(false);
 
@@ -29,17 +29,18 @@ const Add = () => {
             formData.append('description', description);
             formData.append('price', price);
             formData.append('category', category);
-            formData.append('subcategory', subcategory);
+            formData.append('subCategory', subCategory);
             formData.append('sizes', JSON.stringify(sizes));
             formData.append('bestseller', bestseller);
-            const response = await axios.post(backendUrl + '/api/product/add', formData);
+            const response = await axios.post(backendUrl + '/api/product/add', formData,{headers:{token}});
+            console.log(response.data);
             
         } catch (error) {
             
         }
     }
   return (
-    <form className='flex flex-col w-full items-start gap-3'>
+    <form onSubmit={onSubmitHandler} className='flex flex-col w-full items-start gap-3'>
         <div>
             <p className='mb-2'>Upload Image</p>
             <div className='flex gap-2'>
@@ -80,7 +81,7 @@ const Add = () => {
             </div>
             <div>
                 <p className='mb-2'>Subcategory</p>
-                <select onChange={(e)=>setSubcategory(e.target.value)} className='w-full px-3 py-2'>
+                <select onChange={(e)=>setSubCategory(e.target.value)} className='w-full px-3 py-2'>
                     <option value="Topwear">Topwear</option>
                     <option value="Bottomwear">Bottomwear</option>
                     <option value="Winterwear">Winterwear</option>
