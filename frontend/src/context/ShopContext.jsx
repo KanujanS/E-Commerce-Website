@@ -39,10 +39,6 @@ const ShopContextProvider = (props) => {
         toast.success("Product added to cart!");
     }
 
-    // useEffect(()=>{
-    //     console.log(cartItems);
-    // },[cartItems])
-
     const getCartCount = () => {
         let totalCount = 0;
         for (const items in cartItems) {
