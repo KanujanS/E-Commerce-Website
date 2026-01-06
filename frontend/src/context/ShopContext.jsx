@@ -36,7 +36,7 @@ const ShopContextProvider = (props) => {
             cartData[itemId][size] = 1;
         }
         setCartItems(cartData);
-        toast.success("Product added to cart!");
+        toast.success("Product added to cart");
     }
 
     const getCartCount = () => {
