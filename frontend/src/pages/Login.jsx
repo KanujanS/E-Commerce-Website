@@ -1,6 +1,7 @@
-import React, { useContext, useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import { ShopContext } from '../context/ShopContext';
 import axios from 'axios';
+import { toast } from 'react-toastify';
 
 const Login = () => {
   const [currentState,setCurrentState] = useState('Sign Up');
@@ -13,15 +14,33 @@ const Login = () => {
     try {
       if (currentState === "Sign Up") {
         const response = await axios.post(backendUrl + '/api/user/register',{name,email,password});
-
+        if (response.data.success) {
+          setToken(response.data.token);
+          localStorage.setItem('token',response.data.token);
+        } else {
+          toast.error(response.data.message);
+        }
         
       } else{
-
+        const response = await axios.post(backendUrl + '/api/user/login',{email,password});
+        if (response.data.success) {
+          setToken(response.data.token);
+          localStorage.setItem('token',response.data.token);
+        } else {
+          toast.error(response.data.message);
+        }
       }
     } catch (error) {
-      
+      console.log(error);
+      toast.error(error.message);
     }
   }
+
+  useEffect(()=>{
+    if (token) {
+      navigate('/');
+    }
+  },[token])
   return (
     <form onSubmit={onSubmitHandler} className='flex flex-col  w-[90%] sm:max-w-100 m-auto mt-10 gap-4 text-[#654321] border border-none p-8 shadow-2xl shadow-gray-600 rounded-2xl'>
       <div className='flex items-center justify-center gap-2 mb-2 mt-8'>
