@@ -30,11 +30,11 @@ const placeOrderPaypal = async (req, res) => {
 const allOrders = async (req, res) => {
     
 }
-// User order data for frontend
+// User orders data for frontend
 const userOrders = async (req, res) => {
 
 }
-// Update order status from admin panel
+// Update orders status from admin panel
 const updateStatus = async (req, res) => {
 
 }
