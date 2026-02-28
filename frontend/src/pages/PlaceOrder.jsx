@@ -3,9 +3,26 @@ import Title from '../components/Title'
 import CartTotal from '../components/CartTotal'
 import Paypal from '../assets/paypal.png'
 import { ShopContext } from '../context/ShopContext'
+import { data } from 'react-router-dom'
 
 const PlaceOrder = () => {
   const [method,setMethod] = useState('cod');
+  const [formData,setFormData] = useState({
+    firstName: '',
+    lastName: '',
+    email: '',
+    street: '',
+    city: '',
+    state: '',
+    zipcode: '',
+    country: '',
+    phone: ''
+  })
+  const onChangeHandler = (event) => {
+    const name = event.target.name;
+    const value = event.target.value;
+    setFormData(data => ({...data,[name]:value}))
+  }
   const {navigate} = useContext(ShopContext);
   return (
     <div className='flex flex-col sm:flex-row justify-between gap-4 pt-5 sm:pt-14 min-h-[80vh] border-t'>
