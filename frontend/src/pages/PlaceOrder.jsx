@@ -7,7 +7,7 @@ import { data } from 'react-router-dom'
 
 const PlaceOrder = () => {
   const [method,setMethod] = useState('cod');
-  const {navigate} = useContext(ShopContext);
+  const {navigate, backendUrl, token, cartItems, setCartItems, getCartAmount, delivery_fee, products} = useContext(ShopContext);
   const [formData,setFormData] = useState({
     firstName: '',
     lastName: '',
@@ -24,9 +24,23 @@ const PlaceOrder = () => {
     const value = event.target.value;
     setFormData(data => ({...data,[name]:value}))
   }
-  
+  const onSubmitHandler = async (event) => {
+    event.preventDefault();
+    try {
+      let orderItems = [];
+      for(const items in cartItems){
+        for(const item in cartItems[items]){
+          if (cartItems[items][item]>0) {
+            
+          }
+        }
+      }
+    } catch (error) {
+      
+    }
+  }
   return (
-    <form className='flex flex-col sm:flex-row justify-between gap-4 pt-5 sm:pt-14 min-h-[80vh] border-t'>
+    <form onSubmit={onSubmitHandler} className='flex flex-col sm:flex-row justify-between gap-4 pt-5 sm:pt-14 min-h-[80vh] border-t'>
       {/* Left side  */}
       <div className='flex flex-col gap-3 w-full sm:max-w-[500px]'>
         <div className='text-xl sm:text-2xl mt-3'>
