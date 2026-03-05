@@ -4,6 +4,8 @@ import CartTotal from '../components/CartTotal'
 import Paypal from '../assets/paypal.png'
 import { ShopContext } from '../context/ShopContext'
 import { data } from 'react-router-dom'
+import { toast } from 'react-toastify'
+import axios from 'axios'
 
 const PlaceOrder = () => {
   const [method,setMethod] = useState('cod');
@@ -40,10 +42,30 @@ const PlaceOrder = () => {
           }
         }
       }
-      console.log(orderItems);
+      let orderData = {
+        address : formData,
+        items : orderItems,
+        amount : getCartAmount() + delivery_fee
+      }
+      switch (method) {
+        // API calls for COD
+        case 'cod':
+          const response = await axios.post(backendUrl + '/api/order/place', orderData, {headers:{token}});
+          if (response.data.success) {
+            setCartItems({});
+            navigate('/orders');
+          } else {
+            toast.error(response.data.message);
+          }
+          break;
+      
+        default:
+          break;
+      }
       
     } catch (error) {
-      
+      console.log(error);
+      toast.error(error.message);
     }
   }
   return (
