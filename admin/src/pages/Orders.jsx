@@ -46,6 +46,7 @@ const Orders = ({token}) => {
                   })
                 }
               </div>
+              <p>{order.address.firstName + " " +order.address.lastName}</p>
             </div>
           ))
         }
