@@ -27,9 +27,18 @@ const Orders = ({ token }) => {
       toast.error(error.message);
     }
   };
+
+  const statusHandler = async (event, orderId) => {
+    try {
+      const response = await axios.post(backendUrl + "/api/order/status", { orderId, status : event.target.value }, { headers : { token } })
+    } catch (error) {
+      
+    }
+  }
   useEffect(() => {
     fetchAllOrders();
   }, [token]);
+
   return (
     <div>
       <h3>Order Page</h3>
